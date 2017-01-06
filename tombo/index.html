@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                padding-top: 40px;
+            }
+        </style>
+        <title>WKWebView Demo</title>
+        <meta charset="UTF-8">
+            </head>
+    <body>
+        <h1>WKWebView Test</h1>
+        <script type="text/javascript">
+            
+            function nativeCall(){
+                document.body.style.backgroundColor = "blue";
+            }
+            
+            function callNativeApp () {
+                try {
+                    webkit.messageHandlers.mungo.postMessage("Hello from JavaScript");
+                    webkit.messageHandlers.mungo.postMessage({hugo: "troll", ninja: "laser"});
+                } catch(err) {
+                    console.log('The native context does not exist yet');
+                }
+            }
+        
+        setTimeout(function () {
+                   callNativeApp();
+                   }, 5000);
+        </script>
+    </body>
+</html>
